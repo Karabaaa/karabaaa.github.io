@@ -1,0 +1,8 @@
+@mixin truncate-text{
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;                /* s'assurer que text-overflow s'applique */
+    display: block;
+}

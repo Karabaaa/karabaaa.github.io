@@ -1,0 +1,53 @@
+body {
+  font-family: $font-body;
+  color: #333;
+  background-color: #F3F3F3;
+}
+
+.container {
+    @media screen and (min-width: $breakpoint-tablet) {
+      width:100%;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+
+    }
+}
+
+h2 {
+  color: black;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+h4 {
+        font-family:$font-footer;
+        color:white;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+p {
+  font-size: 18px;
+  font-weight: 300; 
+}
+
+a {
+  text-decoration: none;
+  color:black;
+}
+
+li {
+  list-style: none ;
+  font-size: 16px;
+  font-weight: 400;
+}
