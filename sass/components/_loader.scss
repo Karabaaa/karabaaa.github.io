@@ -1,0 +1,55 @@
+/* Overlay plein écran */
+.loader{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background:
+    #fff;
+  animation: hideLoader $loader-duration ease-out forwards;
+}
+
+/* Contenu du loader */
+.loader-inner{
+  display:flex; flex-direction:column; align-items:center; gap:.75rem;
+}
+.brand{
+  font: 700 1.25rem/1.1 $font-footer;
+  letter-spacing:.04em;
+  background: linear-gradient(90deg, $primary-color, $secondary-color);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  animation: pulse 900ms ease-in-out infinite alternate;
+}
+
+/* Anneau qui tourne */
+.ring{
+  width: 72px; aspect-ratio: 1 / 1; border-radius: 50%;
+  border: 6px solid #e9e9e9;
+  border-top-color: $primary-color;
+  border-right-color: $secondary-color;
+  animation: spin 900ms linear infinite;
+}
+
+/* Le contenu de la page apparaît après le loader */
+$page-delay: $loader-duration - 150ms;  // calcule le délai côté Sass
+.page{
+  opacity: 0;
+  animation: showPage 320ms ease-out $page-delay forwards;
+}
+
+/* Animations */
+@keyframes spin{ to{ transform: rotate(360deg); } }
+@keyframes pulse{ from{ transform: translateY(0); } to{ transform: translateY(-2px); } }
+@keyframes hideLoader{
+  0%, 85%{ opacity:1; visibility:visible; }
+  100%{ opacity:0; visibility:hidden; }
+}
+@keyframes showPage{ to{ opacity:1; } }
+
+/* Accessibilité : réduit les animations si préférence activée */
+@media (prefers-reduced-motion: reduce){
+  .ring, .brand{ animation: none; }
+  .loader{ animation-duration: 200ms; }
+  .page{ animation: none; opacity: 1; }
+}

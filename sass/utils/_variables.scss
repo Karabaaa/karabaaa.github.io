@@ -1,0 +1,24 @@
+// Couleurs principales
+$primary-color: #9356DC;
+$secondary-color: #FF79DA;
+$tertiary-color: #99E2D0;
+
+// Typo
+$font-footer: 'Shrikhand', cursive;
+$font-body: 'Roboto', sans-serif;
+
+// Breaking-Points :
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+
+//Loader:
+$loader-duration: 3000ms;
+
+// Menu Sections Animation :
+$section-duration: 800ms;  // durée d’apparition d’une section
+$section-gap: 350ms;       // décalage entre sections
+$base-delay: 150ms;        // petite latence initiale
+
+$item-duration: 420ms;     // durée des items (boutons)
+$item-gap: 110ms;          // décalage entre boutons dans une section
+$item-offset: 180ms;       // délai après l’arrivée de la section avant le 1er bouton

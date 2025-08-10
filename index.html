@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OhMyFood</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Shrikhand&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/c1a726a427.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Loader plein écran -->
+    <div class="loader" aria-hidden="true">
+      <div class="loader-inner">
+        <div class="ring"></div>
+        <p class="brand">ohmyfood</p>
+      </div>
+    </div>
+    <!-- contenu -->
+    <div class="page">
+      <svg
+        class="svg-defs"
+        aria-hidden="true"
+        focusable="false"
+        width="0"
+        height="0"
+      >
+        <defs>
+          <linearGradient
+            id="heartGradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
+            <stop offset="0%" stop-color="#9356DC" />
+            <stop offset="100%" stop-color="#FF79DA" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <header class="header">
+        <img
+          class="logo"
+          src="/assets/images/logo/ohmyfood@2x.svg"
+          alt="logo ohmyfood"
+        />
+      </header>
+      <main>
+        <div class="location-container">
+          <i class="fa-solid fa-location-dot"></i>
+          <span class="location-text">Paris, Belleville</span>
+        </div>
+        <section class="intro">
+          <h2>Réservez le menu qui vous convient</h2>
+          <p>
+            Découvrez des restaurants d’exception, sélectionnés par nos soins.
+          </p>
+          <a class="btn-purple" href="#restaurants">Explorer nos restaurants</a>
+        </section>
+        <section class="fonctionnement">
+          <div class="container">
+            <h2>Fonctionnement</h2>
+            <div class="buttons-container">
+              <button class="btn-grey">
+                <span class="round-purple">1</span>
+                <i class="fa-solid fa-mobile-screen-button"></i>Choisissez un
+                restaurant
+              </button>
+              <button class="btn-grey">
+                <span class="round-purple">2</span>
+                <i class="fa-solid fa-list-ul"></i>Composez votre menu
+              </button>
+              <button class="btn-grey">
+                <span class="round-purple">3</span>
+                <i class="fa-solid fa-store"></i>Dégustez au restaurant
+              </button>
+            </div>
+          </div>
+        </section>
+        <section id="restaurants" class="restaurants">
+          <div class="container">
+            <h2>Restaurants</h2>
+            <div class="restaurants-container">
+              <article class="cards">
+                <a href="/restaurants/restaurant1.html">
+                  <div class="image-container">
+                    <img
+                      class="bottom"
+                      src="./assets/images/restaurants/jay-wennington-N_Y88TWmGwA-unsplash.jpg"
+                      alt="restaurant La palette du goût"
+                    />
+                    <div class="tag">Nouveau</div>
+                  </div>
+                  <div class="card-bottom">
+                    <h3>La palette du goût</h3>
+                    <p>Ménilmontant</p>
+                  </div>
+                </a>
+                <input type="checkbox" id="like-1" class="like-checkbox" />
+                <label for="like-1" class="heart-label">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                    <!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <path
+                      class="heart-path"
+                      d="M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z"
+                    />
+                  </svg>
+                </label>
+              </article>
+              <article class="cards">
+                <a href="/restaurants/restaurant2.html">
+                  <div class="image-container">
+                    <img
+                      src="./assets/images/restaurants/stil-u2Lp8tXIcjw-unsplash.jpg"
+                      alt="restaurant Le délice des sens"
+                    />
+                    <div class="tag">Nouveau</div>
+                  </div>
+                  <div class="card-bottom">
+                    <h3>La note enchantée</h3>
+                    <p>Charonne</p>
+                  </div>
+                </a>
+                <input type="checkbox" id="like-2" class="like-checkbox" />
+                <label for="like-2" class="heart-label">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                    <!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <path
+                      class="heart-path"
+                      d="M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z"
+                    />
+                  </svg>
+                </label>
+              </article>
+              <article class="cards">
+                <a href="/restaurants/restaurant3.html">
+                  <div class="image-container">
+                    <img
+                      class="bottom"
+                      src="./assets/images/restaurants/toa-heftiba-DQKerTsQwi0-unsplash.jpg"
+                      alt="restaurant La note enchantée"
+                    />
+                  </div>
+                  <div class="card-bottom">
+                    <h3>À la française</h3>
+                    <p>Cité Rouge</p>
+                  </div>
+                </a>
+                <input type="checkbox" id="like-3" class="like-checkbox" />
+                <label for="like-3" class="heart-label">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                    <!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <path
+                      class="heart-path"
+                      d="M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z"
+                    />
+                  </svg>
+                </label>
+              </article>
+              <article class="cards">
+                <a href="/restaurants/restaurant4.html">
+                  <div class="image-container">
+                    <img
+                      class="bottom"
+                      src="./assets/images/restaurants/louis-hansel-shotsoflouis-qNBGVyOCY8Q-unsplash.jpg"
+                      alt="restaurant À la française"
+                    />
+                  </div>
+                  <div class="card-bottom">
+                    <h3>Le délice des sens</h3>
+                    <p>Folie-Méricourt</p>
+                  </div>
+                </a>
+                <input type="checkbox" id="like-4" class="like-checkbox" />
+                <label for="like-4" class="heart-label">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                    <!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <path
+                      class="heart-path"
+                      d="M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z"
+                    />
+                  </svg>
+                </label>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <div class="footer-container">
+          <h4>ohmyfood</h4>
+          <ul>
+            <li class="strong">
+              <i class="fa-solid fa-utensils fa-sm"></i
+              ><span>Proposer un restaurant</span>
+            </li>
+            <li class="strong">
+              <i class="fa-solid fa-handshake-angle fa-sm"></i
+              ><span>Devenir partenaire</span>
+            </li>
+            <li>Mentions légales</li>
+            <li>
+              <a href="mailto:contact@ohmyfood.fr" class="footer-link">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

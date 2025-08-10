@@ -1,0 +1,49 @@
+footer {
+    background-color: #353535;
+    color:white;
+    padding: 22px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    > div {
+        min-width: 340px;
+    }
+    .strong {
+        font-weight: 500;
+    }
+
+    i {
+        margin-right: 10px;
+    }
+
+    .footer-link {
+        text-decoration: none; 
+        color: inherit; 
+        display: block;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+     @media screen and (min-width: $breakpoint-tablet) {
+
+        .footer-container {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-start;
+            align-items:flex-end; 
+            height: 114px;
+            gap: 40px;
+            width: 100%;
+            padding: 22px 50px;
+
+                ul {
+                    display:flex;
+                    gap:15px;
+                }
+        }
+    }
+}
