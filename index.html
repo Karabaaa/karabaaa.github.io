@@ -1,26 +1,172 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Les Petits Plats</title>
     <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <title>Fisheye</title>
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/css/styles.css" rel="stylesheet" />
   </head>
   <body>
     <header>
-      <a href="index.html" aria-label="fisheye home page">
-        <img src="assets/images/logo.png" class="logo" alt="fisheye logo" />
-      </a>
-      <h1>Nos photographes</h1>
+      <div class="logo-container">
+        <img
+          id="logo"
+          src="/assets/images/logo.svg"
+          alt="Les Petits Plats Logo"
+        />
+      </div>
+      <h1>
+        CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES
+      </h1>
+      <div class="search-bar">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Rechercher une recette. un ingrédient..."
+        />
+        <button id="clear-button" class="btn" aria-label="Effacer la recherche">
+          <i class="bi bi-x fs-2 clear-icon"></i>
+        </button>
+        <button id="search-button" class="btn" aria-label="Rechercher">
+          <i class="bi bi-search fs-3 text-white"></i>
+        </button>
+      </div>
     </header>
-    <main id="main">
-      <div class="photographer_section"></div>
+    <main>
+      <div class="filters-container">
+        <div class="recipes-filters">
+          <div class="dropdown">
+            <button
+              class="btn dropdown-button"
+              type="button"
+              data-bs-toggle="dropdown"
+            >
+              Ingrédients <i class="bi bi-chevron-down"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li class="search-bar-dropdown">
+                <input
+                  type="text"
+                  id="search-input-ingredients"
+                  class="search-input-dropdown"
+                  placeholder=""
+                  aria-label="Champ de recherche ingrédient"
+                />
+                <button
+                  id="clear-button-ingredients"
+                  class="btn clear-button-dropdown"
+                  aria-label="Effacer la recherche ingrédient"
+                >
+                  <i class="bi bi-x clear-button-icon"></i>
+                </button>
+                <button
+                  id="search-button-ingredients"
+                  class="btn search-button-dropdown"
+                  aria-label="Lancer la recherche ingrédient"
+                >
+                  <i class="bi bi-search dropdown-search-icon"></i>
+                </button>
+              </li>
+              <li class="dropdown-items-ingredients"></li>
+            </ul>
+          </div>
+          <div class="dropdown">
+            <button
+              class="btn dropdown-button"
+              type="button"
+              data-bs-toggle="dropdown"
+            >
+              Appareils <i class="bi bi-chevron-down"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li class="search-bar-dropdown">
+                <input
+                  type="text"
+                  id="search-input-appliances"
+                  placeholder=""
+                  class="search-input-dropdown"
+                  aria-label="Champ de recherche appareil"
+                />
+                <button
+                  id="clear-button-appliances"
+                  class="btn clear-button-dropdown"
+                  aria-label="Effacer la recherche appareil"
+                >
+                  <i class="bi bi-x clear-button-icon"></i>
+                </button>
+                <button
+                  id="search-button-appliances"
+                  class="btn search-button-dropdown"
+                  aria-label="Lancer la recherche appareil"
+                >
+                  <i class="bi bi-search dropdown-search-icon"></i>
+                </button>
+              </li>
+              <li class="dropdown-items-appliances"></li>
+            </ul>
+          </div>
+          <div class="dropdown">
+            <button
+              class="btn dropdown-button"
+              type="button"
+              data-bs-toggle="dropdown"
+            >
+              Ustensiles <i class="bi bi-chevron-down"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li class="search-bar-dropdown">
+                <input
+                  type="text"
+                  id="search-input-ustensils"
+                  class="search-input-dropdown"
+                  placeholder=""
+                  aria-label="Champ de recherche ustensile"
+                />
+                <button
+                  id="clear-button-ustensils"
+                  class="btn clear-button-dropdown"
+                  aria-label="Effacer la recherche ustensile"
+                >
+                  <i class="bi bi-x clear-button-icon"></i>
+                </button>
+                <button
+                  id="search-button-ustensils"
+                  class="btn search-button-dropdown"
+                  aria-label="Lancer la recherche ustensile"
+                >
+                  <i class="bi bi-search dropdown-search-icon"></i>
+                </button>
+              </li>
+              <li class="dropdown-items-ustensils"></li>
+            </ul>
+          </div>
+        </div>
+        <span class="subtitle">1500 recettes</span>
+      </div>
+      <div class="tags-container"></div>
+      <div class="no-results-container"></div>
+      <div class="recipes-container"></div>
     </main>
-    <script src="scripts/templates/photographer.js"></script>
-    <script src="scripts/pages/index.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/data/recipes.js"></script>
+    <script src="/script/template/recipeTemplate.js"></script>
+    <script src="/script/algorithm/algorithm.js"></script>
+    <script src="/script/page/index.js"></script>
   </body>
 </html>

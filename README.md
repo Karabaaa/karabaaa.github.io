@@ -1,6 +1,2 @@
-# Base de code du projet P6 - Parcours Front-end
-
-## Démarrer le projet
-
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
-
+# PetitsPlats2.0
+P7 JS 2.0 Les petits plats
