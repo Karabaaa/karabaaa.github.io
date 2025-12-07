@@ -4,13 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Les Petits Plats</title>
+    <!-- Bootstrap CSS depuis un CDN -->
     <link
-      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+
+    <!-- Bootstrap Icons depuis un CDN -->
     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
       rel="stylesheet"
-      href="node_modules/bootstrap-icons/font/bootstrap-icons.css"
     />
     <link
       href="https://fonts.googleapis.com/css2?family=Anton&display=swap"
@@ -20,14 +23,14 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400&display=swap"
       rel="stylesheet"
     />
-    <link href="/css/styles.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
   </head>
   <body>
     <header>
       <div class="logo-container">
         <img
           id="logo"
-          src="/assets/images/logo.svg"
+          src="assets/images/logo.svg"
           alt="Les Petits Plats Logo"
         />
       </div>
@@ -163,10 +166,11 @@
       <div class="no-results-container"></div>
       <div class="recipes-container"></div>
     </main>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/data/recipes.js"></script>
-    <script src="/script/template/recipeTemplate.js"></script>
-    <script src="/script/algorithm/algorithm.js"></script>
-    <script src="/script/page/index.js"></script>
+    <script src="data/recipes.js"></script>
+    <script src="script/template/recipeTemplate.js"></script>
+    <script src="script/algorithm/algorithm.js"></script>
+    <script src="script/page/index.js"></script>
+    <!-- Bootstrap JS depuis un CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
