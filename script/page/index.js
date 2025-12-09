@@ -31,19 +31,14 @@ const dropdownConfigs = [
   },
 ];
 
-function setupDropdownSearchAndFill(currentRecipes) {
+// Attache les listeners des dropdowns une seule fois
+function setupDropdownListeners() {
   dropdownConfigs.forEach(
     ({ inputSelector, dropdownSelector, getAllItems, category }) => {
-      // Initialisation des filtres
-      populateDropdownItems(
-        dropdownSelector,
-        getUniqueSortedList(getAllItems(currentRecipes)),
-        category
-      );
-      // mise à jour des filtres en fonction de la recherche
       const input = document.querySelector(inputSelector);
       input.addEventListener("input", (e) => {
         const value = e.target.value.toLowerCase();
+        const currentRecipes = window.currentFilteredRecipes || recipes;
         const filtered = getUniqueSortedList(
           getAllItems(currentRecipes)
         ).filter((item) => item.includes(value));
@@ -51,6 +46,17 @@ function setupDropdownSearchAndFill(currentRecipes) {
       });
     }
   );
+}
+
+// Met à jour les données des dropdowns sans toucher aux listeners
+function updateDropdownData(currentRecipes) {
+  dropdownConfigs.forEach(({ dropdownSelector, getAllItems, category }) => {
+    populateDropdownItems(
+      dropdownSelector,
+      getUniqueSortedList(getAllItems(currentRecipes)),
+      category
+    );
+  });
 }
 
 function populateDropdownItems(selector, items, category) {
@@ -78,10 +84,6 @@ function populateDropdownItems(selector, items, category) {
           );
           renderTags();
           runSearch(searchInput.value);
-          // Met à jour le dropdown
-          setupDropdownSearchAndFill(
-            getFilteredRecipes(recipes, searchInput.value, selectedTags)
-          );
         }
       );
     } else {
@@ -101,13 +103,22 @@ function getUniqueSortedList(array) {
 
 // Fonction d'initialisation
 async function init() {
-  recipes.forEach((recipe) => {
-    const recipeModel = recipeTemplate(recipe);
-    const recipeCard = recipeModel.getRecipeCardDOM();
-    recipesContainer.innerHTML += recipeCard;
-  });
-  setupDropdownSearchAndFill(recipes);
+  const recipesHTML = recipes
+    .map((recipe) => {
+      const recipeModel = recipeTemplate(recipe);
+      return recipeModel.getRecipeCardDOM();
+    })
+    .join("");
+  recipesContainer.innerHTML = recipesHTML;
+
+  // Attache les listeners UNE SEULE FOIS
+  setupDropdownListeners();
+  updateDropdownData(recipes);
   updateRecipeCount(recipes.length);
+  clearDropdownInputs("ingredients");
+  clearDropdownInputs("appliances");
+  clearDropdownInputs("ustensils");
+  window.currentFilteredRecipes = recipes;
 }
 
 // Fonction centrale de recherche
@@ -123,14 +134,17 @@ function runSearch(query) {
     noResultElement.textContent = message;
     noResultsContainer.appendChild(noResultElement);
   } else {
-    filteredRecipes.forEach((recipe) => {
-      const recipeModel = recipeTemplate(recipe);
-      const recipeCard = recipeModel.getRecipeCardDOM();
-      recipesContainer.innerHTML += recipeCard;
-    });
+    const recipesHTML = filteredRecipes
+      .map((recipe) => {
+        const recipeModel = recipeTemplate(recipe);
+        return recipeModel.getRecipeCardDOM();
+      })
+      .join("");
+    recipesContainer.innerHTML = recipesHTML;
   }
   updateRecipeCount(filteredRecipes.length);
-  setupDropdownSearchAndFill(filteredRecipes);
+  updateDropdownData(filteredRecipes);
+  window.currentFilteredRecipes = filteredRecipes;
 }
 
 // Met à jour dynamiquement le nombre de recettes
@@ -151,6 +165,25 @@ clearButton.addEventListener("click", function () {
   searchInput.value = "";
   runSearch("");
 });
+
+//clear dropdown inputs on click
+function clearDropdownInputs(category) {
+  const input = document.getElementById("search-input-" + category);
+  const button = document.getElementById("clear-button-" + category);
+  const config = dropdownConfigs.find((config) => config.category === category);
+  button.onclick = function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    input.value = "";
+    const currentRecipes = window.currentFilteredRecipes || recipes;
+    populateDropdownItems(
+      config.dropdownSelector,
+      getUniqueSortedList(config.getAllItems(currentRecipes)),
+      category
+    );
+    // equivaut à input.dispatchEvent(new Event("input"));
+  };
+}
 
 // Ajout d’un tag au clic sur un filtre
 function addTag(name, category) {
@@ -187,9 +220,18 @@ function addTagCloseListeners() {
   });
 }
 
-// Recherche en direct sur l'input principal
+// Debounce pour limiter les appels à runSearch
+let searchTimeout;
+function debounceSearch(query) {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => {
+    runSearch(query);
+  }, 300);
+}
+
+// Recherche en direct sur l'input principal avec debounce
 searchInput.addEventListener("input", (event) => {
-  runSearch(event.target.value);
+  debounceSearch(event.target.value);
 });
 
 // Lancement de l'app
